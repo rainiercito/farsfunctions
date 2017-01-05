@@ -16,7 +16,7 @@ must be sourced before executing the testing
 fars_read(filename)
 }
 \arguments{
-\item{...}{filename from where the data will be read.}
+\item{filename}{from where the data will be read.}
 }
 \value{
 a table wich contains the data from the US National Highway Traffic Safety Administration's 
@@ -24,6 +24,15 @@ Fatality Analysis Reporting System, which is a nationwide census providing the A
 data regarding fatal injuries suffered in motor vehicle traffic crashes.
 }
 \description{
+Use the Use_vignette once to generate the vignette folder in the package's skeleton where the vignette documentation
+made with rmarkdown will be made
+}
+\details{
+use_vignette("farsfunctionsdoc")
+Use the use_testthat() once to generate the test folder in the package's skeleton where the test scripts will be placed
+
+use_testthat()
+
 \code{fars_read(filename)} returns a table with the information loaded from the filename provided as argument.
 }
 \examples{
@@ -33,14 +42,6 @@ fars_read("/Users/1/Desktop/data/fars_data.zip")
 \dontrun{
 fars_read()
 }
-
-Use the Use_vignette once to generate the vignette folder in the package's skeleton where the vignette documentation
-made with rmarkdown will be made
-
-use_vignette("farsfunctionsdoc")
-Use the use_testthat() once to generate the test folder in the package's skeleton where the test scripts will be placed
-
-use_testthat()
 
 
 }

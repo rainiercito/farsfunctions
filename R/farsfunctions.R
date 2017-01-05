@@ -9,10 +9,19 @@
 #' must be sourced before executing the testing 
 #' ********************** Instructions for testing the Package Functionality Accuracy ******************
 #'
+#' Use the Use_vignette once to generate the vignette folder in the package's skeleton where the vignette documentation
+#' made with rmarkdown will be made
+#' 
+#'use_vignette("farsfunctionsdoc")
+#'Use the use_testthat() once to generate the test folder in the package's skeleton where the test scripts will be placed
+#'
+#'use_testthat()
+#'
+#'
 #' \code{fars_read(filename)} returns a table with the information loaded from the filename provided as argument.
 #'
 #'
-#' @param ... filename from where the data will be read.
+#' @param filename from where the data will be read.
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
 #' 
@@ -28,16 +37,7 @@
 #' fars_read()
 #' }
 #' 
-#' Use the Use_vignette once to generate the vignette folder in the package's skeleton where the vignette documentation
-#' made with rmarkdown will be made
-#' 
-#'use_vignette("farsfunctionsdoc")
-#'Use the use_testthat() once to generate the test folder in the package's skeleton where the test scripts will be placed
 #'
-#'use_testthat()
-#'
-#'
-
 
 
 fars_read <- function(filename) {
@@ -54,7 +54,7 @@ fars_read <- function(filename) {
 #' \code{make_filename(year)} returns a table with the information loaded for a desired year.
 #'
 #'
-#' @param ... desired year for having a slide of the data collected from the US National Highway Traffic Safety 
+#' @param year desired year for having a slide of the data collected from the US National Highway Traffic Safety 
 #' Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 #' yearly data regarding fatal injuries suffered in motor vehicle traffic crashes. 
 #'
@@ -81,7 +81,7 @@ make_filename <- function(year) {
 #'
 #' @importFrom magrittr %>%
 #' @importFrom dplyr mutate select
-#' @param ... desired list of years for selecting data collected from the US National Highway Traffic Safety 
+#' @param years desired list of years for selecting data collected from the US National Highway Traffic Safety 
 #' Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 #' yearly data regarding fatal injuries suffered in motor vehicle traffic crashes. 
 #' 
@@ -89,7 +89,7 @@ make_filename <- function(year) {
 #' Fatality Analysis Reporting System for a desired years
 #' 
 #' @examples
-#' fars_read_years(c(2013,2014)
+#' fars_read_years(c(2013,2014))
 #' 
 #'
 #' \dontrun{
@@ -121,14 +121,14 @@ fars_read_years <- function(years) {
 #' @importFrom dplyr summarize
 #' @importFrom tidyr spread
 #'
-#' @param ... desired list of years for selecting data collected from the US National Highway Traffic Safety 
+#' @param years desired list of years for selecting data collected from the US National Highway Traffic Safety 
 #' Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 #' yearly data regarding fatal injuries suffered in motor vehicle traffic crashes to be summarized.
 #'
 #' @return a summary table wich contains the number of accidents grouped by year and month of the given list of years
 #'
 #' @examples
-#' fars_read_years(c(2013,2014)
+#' fars_read_years(c(2013,2014))
 #' 
 #'
 #' \dontrun{
@@ -150,7 +150,10 @@ fars_summarize_years <- function(years) {
 #'  @importFrom dplyr filter
 #'  @importFrom maps map
 #'
-#' @param ... desired state number and year the selected data collected from the US National Highway Traffic Safety 
+#' @param state.num is the US state number from where we will pick the information to be analized
+#' @param year is the selected year of the data collected
+#'  
+#' ... desired state number and year the selected data collected from the US National Highway Traffic Safety 
 #' Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 #' yearly data regarding fatal injuries suffered in motor vehicle traffic crashes needs to be ploted.
 #'
@@ -164,7 +167,7 @@ fars_summarize_years <- function(years) {
 #' fars_map_state()
 #' fars_map_state("10,2014")
 #' }
-fars_map_state <- function(state.num, year) {
+fars_map_state<- function(state.num, year) {
         filename <- make_filename(year)
         data <- fars_read(filename)
         state.num <- as.integer(state.num)

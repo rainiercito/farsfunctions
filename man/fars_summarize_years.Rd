@@ -7,7 +7,7 @@
 fars_summarize_years(years)
 }
 \arguments{
-\item{...}{desired list of years for selecting data collected from the US National Highway Traffic Safety 
+\item{years}{desired list of years for selecting data collected from the US National Highway Traffic Safety 
 Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 yearly data regarding fatal injuries suffered in motor vehicle traffic crashes to be summarized.}
 }
@@ -19,7 +19,7 @@ a summary table wich contains the number of accidents grouped by year and month 
 Because the list of years is limited; invalid years are not included in the data frame.
 }
 \examples{
-fars_read_years(c(2013,2014)
+fars_read_years(c(2013,2014))
 
 
 \dontrun{

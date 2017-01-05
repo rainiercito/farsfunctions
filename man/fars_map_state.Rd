@@ -7,7 +7,11 @@
 fars_map_state(state.num, year)
 }
 \arguments{
-\item{...}{desired state number and year the selected data collected from the US National Highway Traffic Safety 
+\item{state.num}{is the US state number from where we will pick the information to be analized}
+
+\item{year}{is the selected year of the data collected
+ 
+... desired state number and year the selected data collected from the US National Highway Traffic Safety 
 Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 yearly data regarding fatal injuries suffered in motor vehicle traffic crashes needs to be ploted.}
 }

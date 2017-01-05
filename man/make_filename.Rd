@@ -7,7 +7,7 @@
 make_filename(year)
 }
 \arguments{
-\item{...}{desired year for having a slide of the data collected from the US National Highway Traffic Safety 
+\item{year}{desired year for having a slide of the data collected from the US National Highway Traffic Safety 
 Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.}
 }
