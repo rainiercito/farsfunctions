@@ -19,12 +19,11 @@ a summary table wich contains the number of accidents grouped by year and month 
 Because the list of years is limited; invalid years are not included in the data frame.
 }
 \examples{
-fars_read_years(c(2013,2014))
 
 
 \dontrun{
-fars_read_years()
-fars_read_years("2013","2014")
+fars_summarize_years()
+fars_summarize_years("2013","2014")
 }
 }
 

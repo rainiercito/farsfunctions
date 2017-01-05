@@ -21,7 +21,7 @@ Fatality Analysis Reporting System for a desired years
     data frame returned will be NULL an a warning will be delivered
 }
 \examples{
-fars_read_years(c(2013,2014))
+
 
 
 \dontrun{

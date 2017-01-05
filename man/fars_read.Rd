@@ -36,7 +36,7 @@ use_testthat()
 \code{fars_read(filename)} returns a table with the information loaded from the filename provided as argument.
 }
 \examples{
-fars_read("/Users/1/Desktop/data/fars_data.zip")
+
 
 
 \dontrun{

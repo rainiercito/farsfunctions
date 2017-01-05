@@ -9,9 +9,7 @@ fars_map_state(state.num, year)
 \arguments{
 \item{state.num}{is the US state number from where we will pick the information to be analized}
 
-\item{year}{is the selected year of the data collected
- 
-... desired state number and year the selected data collected from the US National Highway Traffic Safety 
+\item{year}{is the selected year of the data collected desired state number and year the selected data collected from the US National Highway Traffic Safety 
 Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 yearly data regarding fatal injuries suffered in motor vehicle traffic crashes needs to be ploted.}
 }
@@ -25,7 +23,7 @@ If the \code{state.num} is invalid this function stops execution and prints an e
  @importFrom maps map
 }
 \examples{
-fars_map_state(10,2014)
+
 
 
 \dontrun{

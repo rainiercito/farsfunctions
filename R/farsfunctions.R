@@ -30,7 +30,7 @@
 #' data regarding fatal injuries suffered in motor vehicle traffic crashes. 
 #' 
 #' @examples
-#' fars_read("/Users/1/Desktop/data/fars_data.zip")
+#' 
 #' 
 #'
 #' \dontrun{
@@ -62,7 +62,6 @@ fars_read <- function(filename) {
 #' Fatality Analysis Reporting System from a desired year. The file name is composed by a definend string and the given year.
 #' 
 #' @examples
-#' make_filename("2014")
 #' 
 #'
 #' \dontrun{
@@ -89,7 +88,7 @@ make_filename <- function(year) {
 #' Fatality Analysis Reporting System for a desired years
 #' 
 #' @examples
-#' fars_read_years(c(2013,2014))
+#' 
 #' 
 #'
 #' \dontrun{
@@ -128,12 +127,11 @@ fars_read_years <- function(years) {
 #' @return a summary table wich contains the number of accidents grouped by year and month of the given list of years
 #'
 #' @examples
-#' fars_read_years(c(2013,2014))
-#' 
+#'
 #'
 #' \dontrun{
-#' fars_read_years()
-#' fars_read_years("2013","2014")
+#' fars_summarize_years()
+#' fars_summarize_years("2013","2014")
 #' }
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
@@ -151,16 +149,14 @@ fars_summarize_years <- function(years) {
 #'  @importFrom maps map
 #'
 #' @param state.num is the US state number from where we will pick the information to be analized
-#' @param year is the selected year of the data collected
-#'  
-#' ... desired state number and year the selected data collected from the US National Highway Traffic Safety 
+#' @param year is the selected year of the data collected desired state number and year the selected data collected from the US National Highway Traffic Safety 
 #' Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public 
 #' yearly data regarding fatal injuries suffered in motor vehicle traffic crashes needs to be ploted.
 #'
 #' @return a plot of the accidents for a given state and year.
 #'  
 #' @examples
-#' fars_map_state(10,2014)
+#' 
 #' 
 #'
 #' \dontrun{
