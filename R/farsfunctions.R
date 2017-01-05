@@ -37,12 +37,8 @@
 #'use_testthat()
 #'
 #'
-library(dplyr)
-library(magrittr)
-library(plyr)
-library(maps)
-library(readr)
-library(tidyr)
+
+
 
 fars_read <- function(filename) {
         if(!file.exists(filename))
@@ -120,9 +116,9 @@ fars_read_years <- function(years) {
 #' Because the list of years is limited; invalid years are not included in the data frame.
 
 #'
-#'@import(dplyr) 
-#'@import(magrittr)
-#' @importFrom dplyr bind_rows, group_by, summarize
+#' @importFrom dplyr bind_rows
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarize
 #' @importFrom tidyr spread
 #'
 #' @param ... desired list of years for selecting data collected from the US National Highway Traffic Safety 
@@ -141,8 +137,8 @@ fars_read_years <- function(years) {
 #' }
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
-        dplyr::bind_rows(dat_list) %>% 
-                dplyr::group_by(year, MONTH) %>% 
+        dplyr:::bind_rows(dat_list) %>% 
+                dplyr:::group_by(year, MONTH) %>% 
                 dplyr::summarize(n = n()) %>%
                 tidyr::spread(year, n)
 }
@@ -151,7 +147,6 @@ fars_summarize_years <- function(years) {
 #'
 #' \code{fars_map_state(state.num,year)} returns a plot of the information loaded for a given state and year.
 #' If the \code{state.num} is invalid this function stops execution and prints an error message.
-#' @import(maps) maps package the map function which uses the latitude and longitude coords for mapping points in a map
 #'  @importFrom dplyr filter
 #'  @importFrom maps map
 #'
