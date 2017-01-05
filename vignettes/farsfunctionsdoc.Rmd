@@ -3,12 +3,14 @@ title: "Fars Functions Documentation"
 author: "Vïctor Rainier Cruz Pérez"
 date: "1/1/2017"
 output:
+  word_document:
+    toc: yes
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
-vignette: |
-  %\VignetteIndexEntry{Model Details for fars_functions_dummy_package} 
-  %\VignetteEngine{knitr::rmarkdown} 
-  %\VignetteEncoding{UTF-8}
+vignette: "%\\VignetteIndexEntry{Model Details for fars_functions_dummy_package} \n%\\VignetteEncoding{UTF-8}\n%\\VignetteEngine{knitr::rmarkdown}
+  \n"
 ---
 This set of functions compose a Dummy R package that helps me to learn how to build and document R packages.  For more details on learning how to build R packages see the Coursera Building R Packages Course at <http://coursera.org>.
 
