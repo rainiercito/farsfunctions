@@ -1,0 +1,194 @@
+---
+title: "Fars Functions Documentation"
+author: "Vïctor Rainier Cruz Pérez"
+date: "1/1/2017"
+output:
+  html_document:
+    toc: yes
+vignette: |
+  %\VignetteIndexEntry{Model Details for fars_functions_dummy_package} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  %\VignetteEncoding{UTF-8}
+---
+This set of functions compose a Dummy R package that helps me to learn how to build and document R packages.  For more details on learning how to build R packages see the Coursera Building R Packages Course at <http://coursera.org>.
+
+To test the **far_funtions** package functionality please follow the next directions
+
+>**Instructions for testing the Package Functionality Accuracy**
+>
+>Use "test_dir("~/Desktop/CursoR2/farsfunctions/R/.")" to run all the test available in the fars_functions Package's R folder (test located inside the test_fars_functions.R script)
+>
+>or
+>
+>Use "test_file("~/Desktop/CursoR2/farsfunctions/R/test_fars_functions.R")" to run all the test available inside the
+testing script test_fars_functions.R located inside the R folder of the fars_functions Package.
+>
+>
+>The code "fars_functions.R" must be sourced before executing the testing
+>
+>or
+>
+>Use  Test your package with Ctrl/Cmd + Shift + T or devtools::test() that will execute the testthat.R file who looks inside the "tests dirrectory" at ("~farsfunctions/tests/testthat/.")" to run all the test available in the fars_functions Package's tests/thestthat folder (test located inside the test_fars_functions.R script)
+
+
+The **far_functions** package contains a set of functions for manipulating the data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System.
+
+# **fars_read(filename) function**
+* the **fars_read(filename)** function returns a table wich contains the data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes. In order to work, the function uses the functions:
+    * readr from the read_csv package
+    * tbl_df from the dplyr package
+    * the parameter **filename** which represents the place from where the data will be read. 
+
+```{r eval=FALSE}
+
+fars_read <- function(filename) {
+        if(!file.exists(filename))
+                stop("file '", filename, "' does not exist")
+        data <- suppressMessages({
+                readr::read_csv(filename, progress = FALSE)
+        })
+        dplyr::tbl_df(data)
+}
+
+```
+
+Some examples for using correctly and incorrectly the **fars_read(filename)** function are:
+
+>_Correct_ way to use the **fars_read(filename)**
+```{r eval=FALSE}
+fars_read("/Users/1/Desktop/data/fars_data.zip")
+```
+
+>_Incorrect_ way to use the **fars_read(filename)**
+```{r eval=FALSE}
+fars_read()
+```
+
+# **make_filename(year) function**
+* the **make_filename(year)** function returns a file name of a table wich contains a slide of the data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System from a desired year. The file name is composed by a definend string and the given year. In order to work, the function uses:
+    * the parameter **year** which represents desired year for having a slide of the data collected from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes
+
+```{r eval=FALSE}
+make_filename <- function(year) {
+        year <- as.integer(year)
+        sprintf("accident_%d.csv.bz2", year)
+}
+```
+Some examples for using correctly and incorrectly the **make_filename(year)** function are:
+
+>_Correct_ way to use the **make_filename(year)**
+```{r eval=FALSE}
+make_filename("2014")
+```
+
+>_Incorrect_ way to use the **make_filename(year)**
+```{r eval=FALSE}
+make_filename()
+```
+
+# **fars_read_years(years) function**
+* the **fars_read_years(years)** function returns a table wich contains a slide of the data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System for a desired years. In order to work, the function uses the functions:
+    * %>% from the magrittr package
+    * mutate, select from the dplyr package
+    * the parameter **years** which represents a desired list of years for selecting data collected from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes. If an invalid year is passaed as parameter, the data frame returned will be NULL an a warning will be delivered.
+ 
+```{r eval=FALSE}
+fars_read_years <- function(years) {
+        lapply(years, function(year) {
+                file <- make_filename(year)
+                tryCatch({
+                        dat <- fars_read(file)
+                        dplyr::mutate(dat, year = year) %>% 
+                                dplyr::select(MONTH, year)
+                }, error = function(e) {
+                        warning("invalid year: ", year)
+                        return(NULL)
+                })
+        })
+}
+```
+
+Some examples for using correctly and incorrectly the **fars_read_years(years)** function are:
+
+>_Correct_ way to use the **fars_read_years(years)**
+```{r eval=FALSE}
+fars_read_years(c(2013,2014))
+```
+
+>_Incorrect_ way to use the **fars_read_years(years)**
+```{r eval=FALSE}
+fars_read_years()
+fars_read_years("2013","2014")
+```
+
+
+# **fars_summarize_years(years) function**
+* the **fars_summarize_years(years)** function returns a summary table wich contains the number of accidents grouped by year and month of the given list of years. In order to work, the function uses the functions:
+    * spread from the tidyr package
+    * bind_rows, group_by and summarize from the dplyr package
+    * the parameter **years** which represents a desired list of years for selecting data collected from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes to be summarized. If an invalid year is passaed as parameter, the data frame returned will be NULL an a warning will be delivered.
+ 
+```{r eval=FALSE}
+fars_summarize_years <- function(years) {
+        dat_list <- fars_read_years(years)
+        dplyr::bind_rows(dat_list) %>% 
+                dplyr::group_by(year, MONTH) %>% 
+                dplyr::summarize(n = n()) %>%
+                tidyr::spread(year, n)
+}
+```
+
+Some examples for using correctly and incorrectly the **fars_summarize_years(years)** function are:
+
+>_Correct_ way to use the **fars_summarize_years(years)**
+```{r eval=FALSE}
+fars_read_years(c(2013,2014))
+```
+
+>_Incorrect_ way to use the **fars_summarize_years(years)**
+```{r eval=FALSE}
+fars_read_years()
+fars_read_years("2013","2014")
+```
+
+
+# **fars_map_state(state.num,year)**
+* the **fars_map_state(state.num,year)** function returns a plot of the information loaded (fatal accidents) for a given state and year. In order to work, the function uses the functions:
+    * maps from the maps package
+    * filter from the dplyr package
+    * the parameters **state.num** and **years** which represents a desired state number and year the selected data collected from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes needs to be ploted. If the **state.num** is invalid this function stops execution and prints an error message. 
+```{r eval=FALSE}
+fars_map_state <- function(state.num, year) {
+        filename <- make_filename(year)
+        data <- fars_read(filename)
+        state.num <- as.integer(state.num)
+
+        if(!(state.num %in% unique(data$STATE)))
+                stop("invalid STATE number: ", state.num)
+        data.sub <- dplyr::filter(data, STATE == state.num)
+        if(nrow(data.sub) == 0L) {
+                message("no accidents to plot")
+                return(invisible(NULL))
+        }
+        is.na(data.sub$LONGITUD) <- data.sub$LONGITUD > 900
+        is.na(data.sub$LATITUDE) <- data.sub$LATITUDE > 90
+        with(data.sub, {
+                maps::map("state", ylim = range(LATITUDE, na.rm = TRUE),
+                          xlim = range(LONGITUD, na.rm = TRUE))
+                graphics::points(LONGITUD, LATITUDE, pch = 46)
+        })
+}
+```
+
+Some examples for using correctly and incorrectly the **fars_summarize_years(years)** function are:
+
+>_Correct_ way to use the **fars_map_state(state.num,year)**
+```{r eval=FALSE}
+fars_map_state(10,2014)
+```
+
+>_Incorrect_ way to use the **fars_map_state(state.num,year)**
+```{r eval=FALSE}
+fars_map_state()
+fars_map_state("10,2014")
+```
