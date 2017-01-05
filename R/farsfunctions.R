@@ -31,12 +31,19 @@
 #' Use the Use_vignette once to generate the vignette folder in the package's skeleton where the vignette documentation
 #' made with rmarkdown will be made
 #' 
-use_vignette("farsfunctionsdoc")
+#'use_vignette("farsfunctionsdoc")
 #'Use the use_testthat() once to generate the test folder in the package's skeleton where the test scripts will be placed
 #'
 #'use_testthat()
 #'
 #'
+library(dplyr)
+library(magrittr)
+library(plyr)
+library(maps)
+library(readr)
+library(tidyr)
+
 fars_read <- function(filename) {
         if(!file.exists(filename))
                 stop("file '", filename, "' does not exist")
