@@ -1,5 +1,6 @@
 Package: farsfunctions
 Type: Package
+Imports:dplyr,magrittr,plyr,maps,readr
 Title: Contains a few formulas for manipulating the data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System.
 Version: 1.0
 Date: 2016-12-20
