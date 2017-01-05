@@ -30,6 +30,5 @@ Maintainer: \packageMaintainer{farsfunctions}
 \examples{
 
 make_filename("2014")
-fars_read_years(c(2013,2014))
-fars_map_state(10,2014)
+
 }
