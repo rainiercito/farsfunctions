@@ -31,7 +31,7 @@
 #' Use the Use_vignette once to generate the vignette folder in the package's skeleton where the vignette documentation
 #' made with rmarkdown will be made
 #' 
-#'use_vignette("fars functions doc")
+use_vignette("farsfunctionsdoc")
 #'Use the use_testthat() once to generate the test folder in the package's skeleton where the test scripts will be placed
 #'
 #'use_testthat()
