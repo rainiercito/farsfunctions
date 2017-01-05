@@ -11,3 +11,4 @@ Suggests: knitr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+BuildVignettes: yes
