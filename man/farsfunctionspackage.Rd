@@ -16,9 +16,9 @@ The DESCRIPTION file:This is a dummy test for making R packages
 ~~ An overview of how to use the package, including the most important functions ~~
 }
 \author{
-\packageAuthor{Victor Rainier Cruz Perez}
+\packageAuthor{farsfunctions}
 
-Maintainer: \packageMaintainer{Victor Rainier Cruz Perez  <rainiercp@somewhere.net>}
+Maintainer: \packageMaintainer{farsfunctions}
 }
 \references{
 ~~ Literature or other references for background information ~~
