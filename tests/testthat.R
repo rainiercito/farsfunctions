@@ -1,4 +1,4 @@
 library(testthat)
-library(farsfunctions)
+library(test_farsfunctions)
 
-test_check("~/Desktop/CursoR2/farsfunctions/tests/testthat/test_fars_functions.R")
+test_check("test_farsfunctions.R")
