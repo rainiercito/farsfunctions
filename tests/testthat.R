@@ -1,2 +1,2 @@
 library(testthat)
-test_check("test_farsfunctions")
+test_check("test_farsfunctions.R")

@@ -29,5 +29,8 @@ Maintainer: \packageMaintainer{farsfunctions}
 ~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 }
 \examples{
-
+fars_read("/Users/1/Desktop/data/fars_data.zip")
+make_filename("2014")
+fars_read_years(c(2013,2014)
+fars_map_state(10,2014)
 }
