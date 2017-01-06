@@ -19,7 +19,7 @@ Fatality Analysis Reporting System from a desired year. The file name is compose
 \code{make_filename(year)} returns a table with the information loaded for a desired year.
 }
 \examples{
-
+make_filename("2014")
 
 \dontrun{
 make_filename()

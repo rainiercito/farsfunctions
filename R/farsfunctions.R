@@ -31,15 +31,13 @@
 #' 
 #' @examples
 #' 
-#' 
+#'
 #'
 #' \dontrun{
 #' fars_read()
 #' }
 #' 
-#'
-
-
+#'@export
 fars_read <- function(filename) {
         if(!file.exists(filename))
                 stop("file '", filename, "' does not exist")
@@ -62,11 +60,12 @@ fars_read <- function(filename) {
 #' Fatality Analysis Reporting System from a desired year. The file name is composed by a definend string and the given year.
 #' 
 #' @examples
-#' 
+#' make_filename("2014")
 #'
 #' \dontrun{
 #' make_filename()
 #' }
+#' @export
 make_filename <- function(year) {
         year <- as.integer(year)
         sprintf("/Users/rainier/Desktop/CursoR2/farsfunctions/R/accident_%d.csv.bz2", year)
@@ -88,13 +87,14 @@ make_filename <- function(year) {
 #' Fatality Analysis Reporting System for a desired years
 #' 
 #' @examples
-#' 
+#' fars_read_years(c(2013,2014))
 #' 
 #'
 #' \dontrun{
 #' fars_read_years()
 #' fars_read_years("2013","2014")
 #' }
+#' @export
 fars_read_years <- function(years) {
         lapply(years, function(year) {
                 file <- make_filename(year)
@@ -128,11 +128,13 @@ fars_read_years <- function(years) {
 #'
 #' @examples
 #'
+#'fars_summarize_years(c(2013,2014))
 #'
 #' \dontrun{
 #' fars_summarize_years()
 #' fars_summarize_years("2013","2014")
 #' }
+#' @export
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
         dplyr:::bind_rows(dat_list) %>% 
@@ -163,6 +165,7 @@ fars_summarize_years <- function(years) {
 #' fars_map_state()
 #' fars_map_state("10,2014")
 #' }
+#' @export
 fars_map_state<- function(state.num, year) {
         filename <- make_filename(year)
         data <- fars_read(filename)

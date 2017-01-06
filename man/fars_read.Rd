@@ -43,6 +43,5 @@ use_testthat()
 fars_read()
 }
 
-
 }
 

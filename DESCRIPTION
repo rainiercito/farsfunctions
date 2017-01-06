@@ -1,15 +1,20 @@
 Package: farsfunctions
 Type: Package
-Imports:dplyr,magrittr,plyr,maps,readr,tidyr
-Title: Contains a few formulas for manipulating the data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System
+Imports:
+    readr,plyr,dplyr,magrittr,tidyr, maps
+Title: Contains a few formulas for manipulating the data from the US National
+    Highway Traffic Safety Administration's Fatality Analysis Reporting System
 Version: 1.0
 Date: 2016-12-20
 Author: Victor Rainier Cruz Perez
 Maintainer: Victor Rainier Cruz Perez  <rainiercp@somewhere.net>
-Description: This is a dummy package for learning how to build R packages usign RStudio knitr and R markdown
+Description: This is a dummy package for learning how to build R packages usign
+    RStudio knitr and R markdown
 License: GPL-3
-Suggests: knitr,
+Suggests:
+    knitr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
 BuildVignettes: yes
+RoxygenNote: 5.0.1

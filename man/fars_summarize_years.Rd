@@ -20,6 +20,7 @@ Because the list of years is limited; invalid years are not included in the data
 }
 \examples{
 
+fars_summarize_years(c(2013,2014))
 
 \dontrun{
 fars_summarize_years()
