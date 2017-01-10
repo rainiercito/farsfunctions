@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rainiercito/farsfunctions.svg?branch=master)](https://travis-ci.org/rainiercito/farsfunctions)
+
 # farsfunctions
 Dummy package for the Building R packages Coursera's Course
 
